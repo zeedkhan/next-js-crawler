@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getBrowser } from "./browser";
 import { parseMetaData } from "@/app/crawl/_component/data";
 
-export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 export async function POST(request: NextRequest) {
     const body = await request.json();
