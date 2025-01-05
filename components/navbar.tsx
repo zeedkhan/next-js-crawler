@@ -52,9 +52,6 @@ export const Navbar = () => {
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
-          <Link isExternal aria-label="Instagram" href={siteConfig.links.instagram}>
-            <IgIcon className="text-danger" />
-          </Link>
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>

@@ -2,6 +2,8 @@ import Card from "./_component/container";
 
 export default function Page() {
     return (
-        <Card />
+        <div className="h-full">
+            <Card />
+        </div>
     );
 }

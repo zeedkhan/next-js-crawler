@@ -46,12 +46,18 @@ function StatusIcon({ value }: { value: string }) {
     return null;
 }
 
+const Split = (string: string) => {
+    return string.split(",").map((item, key) => <p key={key}>{item.trim()}</p>);
+}
+
 export default function ResultTable({ rows }: { rows: ResultProps[] }) {
     return (
-        <Table aria-label="Crawling result">
+        <Table aria-label="Crawling result" className="rounded-2xl border border-gray-100 dark:border-gray-500 ">
             <TableHeader>
                 {columns.map((column) =>
-                    <TableColumn key={column.key}>{column.label}</TableColumn>
+                    <TableColumn key={column.key} className="text-pretty text-center">
+                        {Split(column.label)}
+                    </TableColumn>
                 )}
             </TableHeader>
             <TableBody>
@@ -59,8 +65,8 @@ export default function ResultTable({ rows }: { rows: ResultProps[] }) {
                     <TableRow key={idx}>
                         {(columnKey) => (
                             <TableCell>
-                                <div className="flex items-center space-x-4">
-                                    <p>{getKeyValue(row, columnKey) as string}</p>
+                                <div className="flex items-center space-x-2 justify-center">
+                                    <p className="text-center">{getKeyValue(row, columnKey) as string || "N/A"}</p>
                                     {columnKey !== "hasForm" && columnKey !== "hasEmailOrPhone" ? (
                                         <StatusIcon value={getKeyValue(row, columnKey) as string} />
                                     ) : (

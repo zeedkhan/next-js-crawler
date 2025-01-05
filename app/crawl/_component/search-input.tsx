@@ -6,6 +6,8 @@ import { Form } from "@nextui-org/form";
 import { Button } from "@nextui-org/button";
 import { isUrlValid } from "./data";
 import TutorialModal from "./tutorial-modal";
+import { Bug } from "lucide-react";
+import { Card } from "@nextui-org/card";
 
 type SearchInputProps = {
     loading: boolean;
@@ -15,23 +17,33 @@ type SearchInputProps = {
 const SearchInput = ({ loading, onSubmit }: SearchInputProps) => {
     const validateInput = (url: string) => !isUrlValid(url) ? "Please enter a valid url" : true;
     return (
-        <Form className="z-0 w-full max-w-xs grid grid-cols-1 gap-4" validationBehavior="native" onSubmit={onSubmit} id="crawl-form">
-            <Input
-                validate={validateInput}
-                isRequired
-                type="url"
-                labelPlacement="outside"
-                label="Website URL"
-                name="url"
-                errorMessage="Please enter a valid url"
-                placeholder="Enter your website url"
-            />
-
-            <Button type="submit" disabled={loading} variant="bordered" className="w-3/4 mx-auto">
-                Submit
-            </Button>
-            <TutorialModal />
-        </Form>
+        <Card className="z-0 w-full h-full max-w-md min-h-40 p-4 shadow border-gray-100 dark:border-gray-500 border bg-white dark:bg-[#0e1111]" >
+            <Form className="h-full flex flex-col items-center justify-evenly" validationBehavior="native" onSubmit={onSubmit} id="crawl-form">
+                <Input
+                    validate={validateInput}
+                    isRequired
+                    type="url"
+                    className="mt-0"
+                    labelPlacement="inside"
+                    label="Website URL"
+                    name="url"
+                    errorMessage="Please enter a valid url"
+                    placeholder="https://www.example.com/contact-us"
+                />
+                <div className="w-full flex justify-evenly items-center">
+                    <Button
+                        type="submit"
+                        disabled={loading}
+                        radius="full"
+                        className=" shadow-lg text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium text-sm text-center "
+                        endContent={<Bug size={20} />}
+                    >
+                        Crawl
+                    </Button>
+                    <TutorialModal />
+                </div>
+            </Form>
+        </Card>
     )
 };
 

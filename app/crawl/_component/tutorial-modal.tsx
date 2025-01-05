@@ -16,7 +16,7 @@ export default function TutorialModal() {
     return (
         <>
             <Button onPress={onOpen}
-                className="mx-auto bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+                className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
                 radius="full"
             >
                 Help <CircleHelp />
@@ -83,8 +83,8 @@ export default function TutorialModal() {
 
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" variant="light" onPress={onClose}>
-                                    Close
+                                <Button color="primary"  variant="flat" onPress={onClose}>
+                                    Back
                                 </Button>
                             </ModalFooter>
                         </>
