@@ -1,10 +1,8 @@
-import { Viewport } from "next";
-
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "Crawler",
+  description: "Check EC, GTM, GA4 and CMS",
   navItems: [
     {
       label: "Home",
@@ -12,5 +10,8 @@ export const siteConfig = {
     },
   ],
   navMenuItems: [],
-  links: {},
+  links: {
+    github: "https://github.com/zeedkhan",
+    instagram: "https://instagram.com/zeed.tanakit",
+  },
 };

@@ -12,24 +12,10 @@ export async function POST(request: NextRequest) {
         await page.goto(body.url, { waitUntil: "domcontentloaded" });
         const data = await page.content();
         await browser.close();
-
-        const { title, description, image, cms } = parseMetaData(data);
-
-        // const res = await axios.get(body.url, {
-        //     headers: {
-        //         'Content-Type': 'text/html',
-        //         "Access-Control-Allow-Origin": "*",
-        //     },
-        // });
-        // if (res.status === 200) {
-        //     return NextResponse.json({ data: res.data }, { status: 200 });
-        // }
-        // console.log(data);
-
-        return NextResponse.json({ title, description, image, cms }, { status: 200 });
-        // return NextResponse.json({ error: "Failed to crawl" }, { status: 500 });
+        const { title, description, image, cms, hasEmailOrPhone, hasForm } = parseMetaData(data);
+        return NextResponse.json({ title, description, image, cms, hasEmailOrPhone, hasForm }, { status: 200 });
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ title: "", description: "", cms: null, image: "" }, { status: 500 });
+        return NextResponse.json({ title: "", description: "", cms: null, image: "", hasEmailOrPhone: false, hasForm: false }, { status: 500 });
     }
 }

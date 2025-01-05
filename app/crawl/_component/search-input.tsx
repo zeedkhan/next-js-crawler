@@ -5,6 +5,7 @@ import { FormEvent } from "react";
 import { Form } from "@nextui-org/form";
 import { Button } from "@nextui-org/button";
 import { isUrlValid } from "./data";
+import TutorialModal from "./tutorial-modal";
 
 type SearchInputProps = {
     loading: boolean;
@@ -14,7 +15,7 @@ type SearchInputProps = {
 const SearchInput = ({ loading, onSubmit }: SearchInputProps) => {
     const validateInput = (url: string) => !isUrlValid(url) ? "Please enter a valid url" : true;
     return (
-        <Form className="z-0 w-full max-w-xs grid grid-cols-1 gap-4" validationBehavior="native" onSubmit={onSubmit}>
+        <Form className="z-0 w-full max-w-xs grid grid-cols-1 gap-4" validationBehavior="native" onSubmit={onSubmit} id="crawl-form">
             <Input
                 validate={validateInput}
                 isRequired
@@ -29,6 +30,7 @@ const SearchInput = ({ loading, onSubmit }: SearchInputProps) => {
             <Button type="submit" disabled={loading} variant="bordered" className="w-3/4 mx-auto">
                 Submit
             </Button>
+            <TutorialModal />
         </Form>
     )
 };

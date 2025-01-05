@@ -7,10 +7,14 @@ import {
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { Logo } from "@/components/icons";
+import {
+  Logo,
+  GithubIcon,
+  IgIcon
+} from "@/components/icons";
+import { Link } from "@nextui-org/link";
 
 export const Navbar = () => {
   return (
@@ -45,6 +49,12 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+            <GithubIcon className="text-default-500" />
+          </Link>
+          <Link isExternal aria-label="Instagram" href={siteConfig.links.instagram}>
+            <IgIcon className="text-danger" />
+          </Link>
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
