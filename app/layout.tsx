@@ -26,9 +26,6 @@ const viewport: Viewport = {
   ],
 };
 
-
-const isProduction = process.env.NODE_ENV === "production";
-
 export default function RootLayout({
   children,
 }: {
@@ -37,7 +34,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <GoogleTagManager gtmId={!isProduction ? process.env.GTM_ID as string : "GTM-XYZ"} />
+      <GoogleTagManager gtmId={process.env.GTM_ID as string || "GTM-XYZ"} />
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
