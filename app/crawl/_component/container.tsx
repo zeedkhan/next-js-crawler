@@ -25,7 +25,7 @@ export default function Card() {
 
 
     return (
-        <NextCard className="h-full flex flex-col space-y-2">
+        <NextCard className="h-full grid grid-cols-1 gap-4 content-center">
             {metadata && (
                 <CardHeader className="my-4">
                     <figure className="w-full mx-auto">
